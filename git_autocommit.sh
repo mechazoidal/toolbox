@@ -30,7 +30,8 @@ then
   fi
 
   # FIXME: should really get the list of added files w/ls-files
-  git --git-dir "$DIRECTORY/.git" --work-tree "$DIRECTORY" add .
+  # --all also records removal of files
+  git --git-dir "$DIRECTORY/.git" --work-tree "$DIRECTORY" add --all .
   git --git-dir "$DIRECTORY/.git" --work-tree "$DIRECTORY" commit -m"AUTOCOMMIT" --quiet
 else
   if [ $VERBOSE ] 
