@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 # Helper script for automating git checkins of a single respository.
 # Intended use-case is for autosaved plaintext notes, i.e. vimwiki and the like.
 # swf, 20120206
@@ -29,7 +29,7 @@ done
 # -o : show untracked files
 # --exclude-standard : takes .gitignore and .git/info/exclude into account when building the list
 # --git-dir & --work-tree : must specify these when running from cronjob
-if [ -n "`git --git-dir "$DIRECTORY/.git" --work-tree "$DIRECTORY" ls-files -m -o --exclude-standard`" ] 
+if [ -n "$(git --git-dir "$DIRECTORY/.git" --work-tree "$DIRECTORY" ls-files -m -o --exclude-standard)" ] 
 then
   if [ $VERBOSE ] 
   then
@@ -43,7 +43,7 @@ then
   if [ $MAKE_ARCHIVE ]
   then
     date=$(date "+%Y%m%d")
-    git archive --format=zip --prefix="$DIRECTORY/" HEAD > "$HOME/Desktop/$DIRECTORY_$date.zip"
+    git archive --format=zip --prefix="$DIRECTORY/" HEAD > "$HOME"/Desktop/"$DIRECTORY"_"$date".zip
   fi
 else
   if [ $VERBOSE ] 
